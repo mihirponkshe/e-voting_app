@@ -1,3 +1,6 @@
+require('dotenv').config();
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+
 module.exports = {
   networks: {
     development: {
@@ -10,7 +13,6 @@ module.exports = {
       timeoutBlocks: 50,
       skipDryRun: true
     },
-    // Add localhost as backup
     localhost: {
       host: "127.0.0.1",
       port: 8545,
@@ -25,7 +27,7 @@ module.exports = {
       version: "0.8.21",
       settings: {
         optimizer: {
-          enabled: false,
+          enabled: true, // Enabled optimizer to save gas on mainnet/testnet
           runs: 200
         },
         evmVersion: "byzantium"
@@ -33,7 +35,6 @@ module.exports = {
     }
   },
 
-  // Configure mocha (for testing)
   mocha: {
     timeout: 100000
   }
